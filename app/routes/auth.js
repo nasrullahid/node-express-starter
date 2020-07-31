@@ -3,9 +3,9 @@ const verifySignUp = require('../utils').verifySignUp
 const verifyJwtToken = require('../utils').verifyJwtToken
 
 module.exports = function (apps) {
-  apps.route('/signup')
+  apps.route('/auth/signup')
     .post([verifySignUp.checkDuplicateUserNameOrEmail, verifySignUp.checkRolesExisted], AuthController.signup)
-  apps.route('/signin')
+  apps.route('/auth/signin')
     .post(AuthController.signin)
 
   return apps

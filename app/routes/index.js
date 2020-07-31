@@ -12,9 +12,9 @@ module.exports = (app) => {
   })
 
   // All router
-  app.use('/auth', require('./auth')(router))
-  app.use('/admin', require('./admin')(router))
-  app.use('/user', require('./user')(router))
+  app.use('/v1', require('./auth')(router))
+  app.use('/v1', require('./admin')(router))
+  app.use('/v1', require('./user')(router))
 
   // Router not found
   app.use((req, res) => {
