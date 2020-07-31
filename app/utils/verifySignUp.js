@@ -8,9 +8,9 @@ module.exports = {
       where: {
         email: req.body.email
       }
-    }).then(user => {
+    }).then(async user => {
       if (user) {
-        return (400).send({
+        return res.status(400).send({
           code: 400,
           status: 'error',
           message: 'Email is already taken!'
