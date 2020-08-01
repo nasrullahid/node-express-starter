@@ -4,8 +4,8 @@
   "description": "Node express starter",
   "main": "index.js",
   "scripts": {
-    "start": "node ./app/server.js",
-    "dev": "nodemon ./app/server.js",
+    "start": "cross-env NODE_ENV=production node ./app/server.js",
+    "dev": "cross-env NODE_ENV=development nodemon ./app/server.js",
     "test": "standard --fix"
   },
   "author": "Nasrullah",
