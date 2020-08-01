@@ -3,7 +3,7 @@ const config = require('../config/configRoles.js')
 const Models = require('../models')
 
 module.exports = {
-  signToken(req, res) {
+  signToken (req, res) {
     var token = 'Bearer ' + jwt.sign({ id: req.user._id }, config.secret, { expiresIn: 3600 }) // 1h expired
     if (token) {
       res.header('Authorization', token)
@@ -21,7 +21,7 @@ module.exports = {
     }
   },
 
-  verifyToken(req, res, next) {
+  verifyToken (req, res, next) {
     const tokenHeader = req.headers.authorization || req.headers.Authorization
     // console.log('tokenHeader', tokenHeader)
     if (!tokenHeader) {
@@ -65,7 +65,7 @@ module.exports = {
     })
   },
 
-  async isAdmin(req, res, next) {
+  async isAdmin (req, res, next) {
     await Models.User.findByPk(req.userId)
       .then(user => {
         user.getRoles().then(roles => {
@@ -85,7 +85,7 @@ module.exports = {
       })
   },
 
-  async isUser(req, res, next) {
+  async isUser (req, res, next) {
     await Models.User.findByPk(req.userId)
       .then(user => {
         user.getRoles().then(roles => {

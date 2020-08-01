@@ -4,7 +4,7 @@ const Models = require('../models')
 
 module.exports = {
   // Dashboard
-  async getDashboard(req, res) {
+  async getDashboard (req, res) {
     return res.status(200).send({
       code: 200,
       status: 'success',
@@ -13,7 +13,7 @@ module.exports = {
   },
 
   // User
-  async listUser(req, res) {
+  async listUser (req, res) {
     const search = req.query.search || ''
     const role = req.query.role || ''
     const status = req.query.status || ''
@@ -41,7 +41,9 @@ module.exports = {
       },
       order: [['createdAt', 'DESC']]
     }
+
     const { docs, pages, total } = await Models.User.paginate(options)
+    console.log(pages)
 
     let totalPage = 1
     if (limit > 0) {
@@ -59,7 +61,7 @@ module.exports = {
     }
     return res.status(200).send(response)
   },
-  async addUser(req, res) {
+  async addUser (req, res) {
     const roles = await Models.Role.findAll({
       attributes: ['id', 'name'],
       where: {
@@ -97,7 +99,7 @@ module.exports = {
         })
       })
   },
-  async detailUser(req, res) {
+  async detailUser (req, res) {
     await Models.User
       .findOne({
         attributes: ['id', 'uuid', 'name', 'email', 'phone', 'address', 'about', 'jobTitle', 'status', 'photo'],
@@ -132,11 +134,11 @@ module.exports = {
         return res.status(500).send({
           code: 500,
           status: 'error',
-          message: error,
+          message: error
         })
       })
   },
-  async editUser(req, res) {
+  async editUser (req, res) {
     const roles = await Models.Role.findAll({
       attributes: ['id', 'name'],
       where: {
@@ -183,7 +185,7 @@ module.exports = {
               code: 200,
               status: 'success',
               data: result,
-              message: 'Updated succesfully',
+              message: 'Updated succesfully'
             }
             return res.status(200).send(response)
           })

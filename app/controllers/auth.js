@@ -5,7 +5,7 @@ const config = require('../config/configRoles')
 const Models = require('../models')
 
 module.exports = {
-  async signup(req, res) {
+  async signup (req, res) {
     await Models.User
       .create({
         name: req.body.name,
@@ -37,7 +37,7 @@ module.exports = {
                   return item.name
                 })
               },
-              message: 'User registered successfully',
+              message: 'User registered successfully'
             })
           })
         }).catch(err => {
@@ -56,7 +56,7 @@ module.exports = {
       })
   },
 
-  async signin(req, res) {
+  async signin (req, res) {
     await Models.User
       .findOne({
         where: {
@@ -107,7 +107,7 @@ module.exports = {
               return item.name
             })
           },
-          message: 'Logged in successfully',
+          message: 'Logged in successfully'
         })
       }).catch(err => {
         return res.status(500).send({

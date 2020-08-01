@@ -41,8 +41,7 @@ db.sequelize.sync({ force: false }).then(() => {
   app.listen(port, () => console.log(title + ' run on ' + url + ' port:' + port))
 })
 
-
-function createRoles() {
+function createRoles () {
   db.Role.findOrCreate({
     where: {
       id: 1,
@@ -56,5 +55,4 @@ function createRoles() {
       name: 'USER'
     }
   })
-
 }

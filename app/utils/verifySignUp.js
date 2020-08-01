@@ -3,7 +3,7 @@ const config = require('../config/configRoles')
 const ROLEs = config.ROLEs
 
 module.exports = {
-  async checkDuplicateUserNameOrEmail(req, res, next) {
+  async checkDuplicateUserNameOrEmail (req, res, next) {
     await Models.User.findOne({
       where: {
         email: req.body.email
@@ -34,7 +34,7 @@ module.exports = {
     })
   },
 
-  checkRolesExisted(req, res, next) {
+  checkRolesExisted (req, res, next) {
     for (let i = 0; i < req.body.roles.length; i++) {
       if (!ROLEs.includes(req.body.roles[i].toUpperCase())) {
         return res.status(400).send({

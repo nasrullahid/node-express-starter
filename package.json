@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./app/server.js",
     "dev": "nodemon ./app/server.js",
-    "test": "standard"
+    "test": "standard --fix"
   },
   "author": "Nasrullah",
   "license": "ISC",

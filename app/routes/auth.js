@@ -1,6 +1,5 @@
 const AuthController = require('../controllers').auth
 const verifySignUp = require('../utils').verifySignUp
-const verifyJwtToken = require('../utils').verifyJwtToken
 
 module.exports = function (apps) {
   apps.route('/auth/signup')
